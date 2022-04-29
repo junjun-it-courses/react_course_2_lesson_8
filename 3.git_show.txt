@@ -1,0 +1,38 @@
+У каждого коммита есть идентификатор (говорят "хеш"), уникальный набор символов.
+ С помощью хеша можно посмотреть все изменения, сделанные в рамках одного коммита:
+
+> git log
+// вывод косноли
+commit d591d83f38422dd30e1659165704750645be2002 (HEAD -> master) // -> это хеш
+Author: Vladimir <shaitan.vladimir@gmail.com>
+Date:   Sun Oct 24 20:00:55 2021 +0300
+
+Выполним команду git show чтобы посмотреть все изменения в рамках этого коммита
+
+> git show d591d83f38422dd30e1659165704750645be2002 // указываем хеш комита
+
+// Вывод с консоли
+
+Author: Vladimir <shaitan.vladimir@gmail.com>
+Date:   Sun Oct 24 20:00:55 2021 +0300
+
+    asdas
+
+diff --git a/someFile.txt b/someFile.txt
+index 0247eeb..1f0bad9 100644
+--- a/someFile.txt
++++ b/someFile.txt
+@@ -1 +1,2 @@
+-asdas
++
++'lsadjf;jalkhsdfkja;dslkfn;asldknf;akjj;aksdf;kaasdas
+diff --git a/someFile3.txt b/someFile3.txt
+new file mode 100644
+index 0000000..0247eeb
+--- /dev/null
++++ b/someFile3.txt
+@@ -0,0 +1 @@
++asdas
+
+Это пример вывода с консоли, с помощью этого инструмента можно проверить
+любой комит, нужно только знать его хеш.

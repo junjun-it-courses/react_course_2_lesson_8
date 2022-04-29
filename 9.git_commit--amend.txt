@@ -1,0 +1,43 @@
+Часто разработчики делают коммит и сразу же понимают, что забыли добавить часть файлов
+через git add. Оставшуюся часть изменений можно дослать следующим коммитом либо, если изменения
+ещё не были отправлены во внешнюю систему, можно добавить изменения в текущий коммит.
+Для этого во время коммита добавляется флаг --amend:
+
+Создадим пару файлов с контентом
+
+~ echo 'experiment with amend' >> INFO.md
+~ echo 'experiment with amend' >> README.md
+
+// Добавим только 1 файл а второй "забудем"
+
+~ git add INFO.md
+
+// Сделаем commit
+
+~ git commit -m 'add content to INFO.md and README.md'
+
+// Проверим статус и заметим что забыли добавить файл
+
+~ git status
+On branch main
+Your branch is ahead of 'origin/main' by 1 commit.
+  (use "git push" to publish your local commits)
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+    modified:   README.md
+
+// Увидели, что забыли добавить файл. Добавляем
+
+~ git add README.md
+~ git commit --amend
+
+// Все готово
+
+На самом деле команда git commit --amend не обновляет комит, а откатывает его через git reset
+после чего добавляет ваш файл через git add и комитит его через git commit
+
+Если вы не хотите обновлять описание комита можно запустить команду с флагами --no-edit
+
+~ git commit --amend --no-edit
